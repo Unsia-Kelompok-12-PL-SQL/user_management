@@ -23,9 +23,9 @@ Untuk menjalankan server, gunakan perintah berikut:
 
 bash
 
-`uvicorn uts_pl_sql_12.main:app --reload` 
+`uvicorn user_management.main:app --reload` 
 
-Pastikan terminal berada di lokasinya parent dari directory "/uts_pl_sql_12/". Jika tidak, arahkan terminal ke folder parent dengan perintah:
+Pastikan terminal berada di lokasinya parent dari directory "/user_management/". Jika tidak, arahkan terminal ke folder parent dengan perintah:
 
 bash
 

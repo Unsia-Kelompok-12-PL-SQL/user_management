@@ -1,13 +1,14 @@
 ﻿
-```markdown
+
 # UTS PL SQL 12 - User Management
 
 ## Instalasi
 
 Untuk menginstal paket yang diperlukan, jalankan perintah berikut:
 
-```bash
+```
 pip install fastapi[all] uvicorn databases[postgresql] passlib[bcrypt] python-jose
+```
 
 ## Konfigurasi Database
 
@@ -21,15 +22,12 @@ pip install fastapi[all] uvicorn databases[postgresql] passlib[bcrypt] python-jo
 
 Untuk menjalankan server, gunakan perintah berikut:
 
-bash
 
 `uvicorn user_management.main:app --reload` 
 
 Pastikan terminal berada di lokasinya parent dari directory "/user_management/". Jika tidak, arahkan terminal ke folder parent dengan perintah:
 
-bash
 
-```bash
-cd ..
 ```
+cd ..
 ```

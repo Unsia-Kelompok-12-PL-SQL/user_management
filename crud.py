@@ -85,6 +85,26 @@ def create_post(db: Session, post: schemas.PostCreate, user_id: int):
     db.refresh(db_post)
     return db_post
 
+def get_post(db: Session, post_id: int):
+    return db.query(models.Post).filter(models.Post.id == post_id).first()
+
+def update_post(db: Session, post_id: int, post: schemas.PostCreate):
+    db_post = db.query(models.Post).filter(models.Post.id == post_id).first()
+    if post.title:
+        db_post.title = post.title
+    if post.content:
+        db_post.content = post.content
+    db.commit()
+    db.refresh(db_post)
+    return {"message": "Post updated"}
+
+def delete_post(db: Session, post_id: int):
+    db_post = db.query(models.Post).filter(models.Post.id == post_id).first()
+    db.delete(db_post)
+    db.commit()
+    return {"message": "Post deleted"}
+
+
 def update_user(db: Session, user_id: int, user: schemas.UpdateUser):
     db_user = db.query(models.User).filter(models.User.id == user_id).first()
     if user.name:

@@ -32,6 +32,14 @@ class PostCreate(BaseModel):
     content: str
     user_id: int
 
+class Post(BaseModel):
+    id: int
+    title: str
+    content: str
+    user_id: int
+    class Config:
+        form_attributes = True
+
 class SignUp(BaseModel):
     name: str
     email: str

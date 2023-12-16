@@ -74,6 +74,24 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     return crud.delete_user(db=db, user_id=user_id)
 
+@app.get("/api/v1/posts/", response_model=schemas.Post)
+def get_posts(db: Session = Depends(get_db)):
+    return crud.get_posts(db=db)
+
 @app.post("/api/v1/posts/")
 def create_post(post: schemas.PostCreate, db: Session = Depends(get_db)):
     return crud.create_post(db=db, post=post, user_id=1)
+
+@app.put("/api/v1/posts/{post_id}")
+def update_post(post_id: int, post: schemas.PostCreate, db: Session = Depends(get_db)):
+    db_post = crud.get_post(db, post_id=post_id)
+    if not db_post:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Post not found")
+    return crud.update_post(db=db, post=post, post_id=post_id)
+
+@app.delete("/api/v1/posts/{post_id}")
+def delete_post(post_id: int, db: Session = Depends(get_db)):
+    db_post = crud.get_post(db, post_id=post_id)
+    if not db_post:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Post not found")
+    return crud.delete_post(db=db, post_id=post_id)

@@ -31,3 +31,6 @@ Pastikan terminal berada di lokasinya parent dari directory "/user_management/".
 ```
 cd ..
 ```
+
+Dokumentasi postman : 
+`https://documenter.getpostman.com/view/11627091/2s9Ykn9Mtc`
